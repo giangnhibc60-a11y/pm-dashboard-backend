@@ -44,6 +44,15 @@ app.get('/api/tasks', async (req, res) => {
   }
 });
 
+// Health Check Endpoint for Service Monitoring
+app.get('/api/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
